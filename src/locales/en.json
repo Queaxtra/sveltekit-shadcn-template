@@ -1,0 +1,8 @@
+{
+  "templateText": "Welcome to the SvelteKit + Shadcn UI + Tailwind CSS template",
+  "templateDescription": "This template has been professionally developed by Queaxtra. You can safely use it in any project you wish.",
+  "buttons": {
+    "turkish": "Turkish",
+    "english": "English"
+  }
+}

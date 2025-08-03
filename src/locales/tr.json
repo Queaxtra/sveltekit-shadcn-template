@@ -1,0 +1,8 @@
+{
+  "templateText": "SvelteKit + Shadcn UI + Tailwind CSS şablonuna hoş geldiniz",
+  "templateDescription": "Bu şablon Queaxtra tarafından profesyonel olarak geliştirilmiştir. Dilediğiniz projede güvenle kullanabilirsiniz.",
+  "buttons": {
+    "turkish": "Türkçe",
+    "english": "İngilizce"
+  }
+}
