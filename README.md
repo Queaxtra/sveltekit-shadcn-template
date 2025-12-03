@@ -6,6 +6,7 @@ This template has been meticulously crafted by [Queaxtra](https://github.com/que
 - **SvelteKit**: A cutting-edge web framework designed for building high-performance, scalable web applications.
 - **Shadcn UI**: A comprehensive suite of UI components built with Radix UI and Tailwind CSS, ensuring both flexibility and accessibility.
 - **Tailwind CSS**: A utility-first CSS framework that enables rapid and consistent custom design implementation.
+- **Theme Support**: Dark and light mode support with localStorage persistence for user preferences.
 - **i18n Support**: Built-in internationalization (i18n) infrastructure, making it easy to create multilingual applications out of the box.
 
 ## Installation
