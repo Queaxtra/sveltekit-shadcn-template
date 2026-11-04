@@ -1,19 +1,12 @@
 <script lang="ts">
-  import Button from "$lib/components/ui/button/button.svelte";
+  import { Button } from "$lib/components/ui/button/index.js";
   import { setLanguage } from "$lib/stores/language";
-  import { languages } from "$lib/utils/languages";
-  import { setTheme, theme } from "$lib/stores/theme";
+  import type { SupportedLanguage } from "$lib/utils/languages";
+  import { theme, toggleTheme } from "$lib/stores/theme";
   import { _ } from "svelte-i18n";
 
-  function changeLanguage(language: string) {
-    if (languages.includes(language)) {
-      setLanguage(language);
-    }
-  }
-
-  function toggleTheme() {
-    const newTheme = $theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+  function changeLanguage(language: SupportedLanguage) {
+    setLanguage(language);
   }
 </script>
 

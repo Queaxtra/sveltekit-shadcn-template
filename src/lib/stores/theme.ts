@@ -1,19 +1,10 @@
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 import { browser } from "$app/environment";
 
-type Theme = "light" | "dark";
+export type Theme = "light" | "dark";
 
 const applyThemeToDOM = (newTheme: Theme): void => {
-	const htmlElement = document.documentElement;
-	const isDarkTheme = newTheme === "dark";
-
-	if (isDarkTheme) {
-		htmlElement.classList.add("dark");
-	}
-
-	if (!isDarkTheme) {
-		htmlElement.classList.remove("dark");
-	}
+	document.documentElement.classList.toggle("dark", newTheme === "dark");
 };
 
 export const getTheme = (): Theme => {
@@ -21,7 +12,7 @@ export const getTheme = (): Theme => {
 		const savedTheme = localStorage.getItem("theme");
 
 		if (savedTheme === "light" || savedTheme === "dark") {
-			return savedTheme as Theme;
+			return savedTheme;
 		}
 	}
 
@@ -30,13 +21,18 @@ export const getTheme = (): Theme => {
 
 export const theme = writable<Theme>(getTheme());
 
+if (browser) {
+	theme.subscribe((value) => {
+		applyThemeToDOM(value);
+	});
+}
+
 export const setTheme = (newTheme: Theme): void => {
 	try {
 		theme.set(newTheme);
 
 		if (browser) {
 			localStorage.setItem("theme", newTheme);
-			applyThemeToDOM(newTheme);
 		}
 	} catch (error) {
 		console.error("Failed to set theme:", error);
@@ -44,15 +40,5 @@ export const setTheme = (newTheme: Theme): void => {
 };
 
 export const toggleTheme = (): void => {
-	if (browser) {
-		let currentTheme: Theme = "light";
-		const unsubscribe = theme.subscribe(value => {
-			currentTheme = value;
-		});
-
-		unsubscribe();
-
-		const newTheme: Theme = currentTheme === "light" ? "dark" : "light";
-		setTheme(newTheme);
-	}
+	setTheme(get(theme) === "light" ? "dark" : "light");
 };

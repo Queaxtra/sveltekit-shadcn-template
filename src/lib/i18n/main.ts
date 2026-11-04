@@ -1,5 +1,5 @@
 import { addMessages, init } from 'svelte-i18n';
-import { getLanguage } from '$lib/stores/language';
+import { languages } from '$lib/utils/languages';
 
 import en from '../../locales/en.json';
 import tr from '../../locales/tr.json';
@@ -8,6 +8,6 @@ addMessages('en', en);
 addMessages('tr', tr);
 
 init({
-  fallbackLocale: 'en',
-  initialLocale: getLanguage()
+  fallbackLocale: languages[0],
+  initialLocale: languages[0]
 });
